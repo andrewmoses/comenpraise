@@ -1,0 +1,7 @@
+<div class="container">
+  <ul class="collection with-header">
+    <li class="collection-header"><h4>Books of the Bible</h4></li>
+    <li ng-repeat="each in bible" class="collection-item"><a href="#!/book/{{$index}}">{{each.name}}</a></li>
+  </ul>
+<a ng-click="closeapp()">.</a>
+</div>
