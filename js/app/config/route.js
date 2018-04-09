@@ -1,5 +1,9 @@
 angular.module('App').config(function ($routeProvider) {
 $routeProvider
+    .when('/dev_home', {
+        templateUrl: 'partials/pages/dev_home.html',
+        controller: 'DevHomeController'
+    })
     .when('/home', {
         templateUrl: 'partials/pages/home.html',
         controller: 'HomeController'
@@ -17,6 +21,6 @@ $routeProvider
         controller: 'PassageController'
     })
     .otherwise({
-        redirectTo: '/home'
+        redirectTo: '/dev_home'
     });
 });

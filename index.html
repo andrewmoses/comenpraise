@@ -44,14 +44,19 @@
       /* Support for IE. */
       font-feature-settings: 'liga';
     }
+    .parallax-container {
+      height: 200px;
+    }
   </style>
 </head>
 <body>
+  <!-- <div id="homepage">&nbsp;</div> -->
   <!-- <a href="#/home">home</a> -->
   <div ng-view></div>
   <!-- libraries -->
   <script src="js/libs/angular.min.js"></script>
   <script src="js/libs/angular-route.min.js"></script>
+  <script src="js/libs/angular-touch.js"></script>
   <script type="text/javascript" src="js/libs/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="js/libs/materialize.min.js"></script>
   <!-- <script src="js/index.js"></script> -->
@@ -62,6 +67,7 @@
   <!-- config -->
   <script src="js/app/config/route.js"></script>
   <!-- controllers -->
+  <script src="js/app/controllers/devhome-controller.js"></script>
   <script src="js/app/controllers/chapselector-controller.js"></script>
   <script src="js/app/controllers/home-controller.js"></script>
   <script src="js/app/controllers/refselector-controller.js"></script>
