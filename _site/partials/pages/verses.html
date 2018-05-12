@@ -1,0 +1,10 @@
+<div class="container">
+  <h4 class="center-align">{{bo_ch}}</h4>
+  <p class="center-align">VERSES</p>
+  <div class="row">
+    <div ng-repeat="each in verses" class="col s2">
+      <!-- need to set path and scroll to the particular (selected verse) -->
+      <p class="center-align"><a href="#!/passage/{{bookno}}/{{chapterno}}/{{each}}">{{each}}</a></p>
+    </div>
+  </div>
+</div>

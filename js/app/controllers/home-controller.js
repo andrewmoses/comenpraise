@@ -13,6 +13,10 @@ angular.module('App').controller('HomeController', function ($scope, $http) {
     // $scope.book = "wow da";
     // console.log($scope.bible[chapindex].chapters.length);
   }
+  $scope.closeapp = function () {
+    console.log('im in the fun');
+    KioskPlugin.exitKiosk();
+  }
 
 
 

@@ -16,7 +16,11 @@ $routeProvider
         templateUrl: 'partials/pages/chapselector.html',
         controller: 'ChapselectorController'
     })
-    .when('/passage/:bookindex/:chapterindex', {
+    .when('/chapter/:bookindex/:chapterindex', {
+        templateUrl: 'partials/pages/verses.html',
+        controller: 'VersesController'
+    })
+    .when('/passage/:bookindex/:chapterindex/:verseindex', {
         templateUrl: 'partials/pages/passage.html',
         controller: 'PassageController'
     })
