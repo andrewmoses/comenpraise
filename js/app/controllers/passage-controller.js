@@ -1,21 +1,53 @@
-angular.module('App').controller('PassageController', function ($scope, $http, $routeParams, $location, $anchorScroll) {
-  console.log($routeParams.bookindex);
-  console.log($routeParams.chapterindex);
-  console.log($routeParams.verseindex);
-  var myEl = angular.element( document.querySelector( '#passagetag' ) );
-  $http.get('en_kjv.json').then(function(res){
-    $scope.bible = res.data;
-    $scope.passagetitle = $scope.bible[$routeParams.bookindex].name + " "+$routeParams.chapterindex;
-    // $scope.selectedpassage = "";
-    for(var i = 1; i<=$scope.bible[$routeParams.bookindex].chapters[$routeParams.chapterindex-1].length;i++)
-    {
-      myEl.append("<div id='v"+i+"' > &nbsp;&nbsp;<small><b>"+i+"</b></small>"+" "+$scope.bible[$routeParams.bookindex].chapters[$routeParams.chapterindex-1][i-1]+"</div>");
-      // $scope.selectedpassage = $scope.selectedpassage + " <small>"+i+"</small>"+" "+$scope.bible[$routeParams.bookindex].chapters[$routeParams.chapterindex][i-1];
-    }
-    myEl.append("<Br><br><Br><Br><Br>");
-    $('html, body').animate({
-        scrollTop: $("#v"+$routeParams.verseindex).offset().top
-    }, 1500);
-  });
+angular.module('App').controller('PassageController', function ($scope, $http, $routeParams, $location, $anchorScroll, $sce) {
+  // var myEl = angular.element( document.querySelector( '#passagetag' ) );
+  // $http.get('test_songs.json').then(function(res){
+  //   $scope.s_title = res.data[$routeParams.songindex].title;
+  //   $scope.bindHTML = $sce.trustAsHtml(res.data[$routeParams.songindex].lyrics);
+  //   $scope.s_lyrics = res.data[$routeParams.songindex].lyrics;
+  //   $scope.sno = parseInt($routeParams.songindex)+1;
+  // });
+
+  var storage = window.localStorage;
+  var db;
+  var databaseName = 'myDB';
+  var databaseVersion;
+  var allsongs;
+  var dbv_fs = storage.getItem('db_v');
+  databaseVersion = dbv_fs;
+  var openRequest = window.indexedDB.open(databaseName, databaseVersion);
+  openRequest.onerror = function (event) {
+      console.log(openRequest.errorCode);
+  };
+  openRequest.onsuccess = function (event) {
+      // Database is open and initialized - we're good to proceed.
+      db = openRequest.result;
+      displayData();
+  };
+
+
+  function displayData() {
+    // console.log(db);
+    var result = [];
+    var handleResult = function(event) {
+    	var cursor = event.target.result;
+    	if (cursor) {
+    		result.push({title:cursor.value.title, lyrics:cursor.value.lyrics});
+    		cursor.continue();
+    	}
+    };
+    var transaction = db.transaction('customers', "readonly");
+  	var objectStore = transaction.objectStore("customers");
+    objectStore.openCursor().onsuccess = handleResult;
+
+  	transaction.oncomplete = function(event) {
+      $scope.$apply(function(){
+        $scope.s_title = result[$routeParams.songindex].title;
+        $scope.bindHTML = $sce.trustAsHtml(result[$routeParams.songindex].lyrics);
+        $scope.s_lyrics = result[$routeParams.songindex].lyrics;
+        $scope.sno = parseInt($routeParams.songindex)+1;
+
+      });
+  	};
+  }
 
 });

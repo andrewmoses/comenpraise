@@ -1,0 +1,29 @@
+<div class="search-wrapper card input-field" style="margin-right: 10px; margin-left: 10px">
+  <form>
+    <div class="input-field">
+      <input ng-model = "s_query" id="search" type="search" style="margin-left: 50px;border-bottom: 0px; box-shadow: 0 0 0 0;width: 200pt;" required>
+      <label class="label-icon" for="search" style="top: -3px;"><i class="material-icons">search</i></label>
+      <!-- <i class="material-icons">close</i> -->
+    </div>
+  </form>
+</div>
+<div class="container">
+  <!-- <h4 id="b_head" class="center-align">Song list</h5> -->
+    <div class="col s12">
+      <ul class="collection">
+        <li ng-repeat="each in songs | filter: s_query" class="collection-item"><a href="#!/passage/{{$index}}">{{each.title}}</a><a href="#!" class="secondary-content">{{$index+1}}</a></li>
+      </ul>
+    </div>
+    <!-- <div class="col s6">
+      <h6 class="center-align">NT</h6>
+      <ul id="nt_id" class="collection" style='overflow:scroll;'>
+        <li ng-repeat="each in nt" class="collection-item center-align"><a href="#!/book/{{each.bno}}">{{each.name}}</a></li>
+      </ul>
+    </div> -->
+    <!-- <a ng-click="closeapp()">.</a> -->
+  <!-- <ul class="collection with-header">
+    <li class="collection-header"><h4>Books of the Bible</h4></li>
+    <li ng-repeat="each in bible" class="collection-item"><a href="#!/book/{{$index}}">{{each.name}}</a></li>
+  </ul> -->
+
+</div>

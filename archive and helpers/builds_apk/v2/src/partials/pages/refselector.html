@@ -1,0 +1,23 @@
+<div class="search-wrapper card input-field" style="margin-right: 10px; margin-left: 10px">
+  <form>
+    <div class="input-field">
+      <input ng-model = "s_query" id="search" type="search" style="margin-left: 50px;border-bottom: 0px; box-shadow: 0 0 0 0;width: 200pt;" required>
+      <label class="label-icon" for="search" style="top: -3px;"><i class="material-icons">search</i></label>
+      <!-- <i class="material-icons">close</i> -->
+    </div>
+  </form>
+</div>
+<div class="container">
+  <div class="col s12">
+    <ul class="collection">
+      <li ng-repeat="each in fsongs  = (songs | filter:s_query)" class="collection-item"><a href="#!/passage/{{$index}}">{{each.title}}</a><a href="#!" class="secondary-content">{{$index+1}}</a></li>
+      <li ng-hide="fsongs.length" class="collection-item center-align">Not found :(</li>
+    </ul>
+  </div>
+  <h5>{{newflag}}</h5>
+  <div class="col s12">
+    <ul class="collection">
+      <li ng-repeat="each in index_test" class="collection-item"><a>{{each.firstName}}</a></li>
+    </ul>
+  </div>
+</div>

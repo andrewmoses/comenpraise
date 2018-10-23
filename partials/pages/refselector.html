@@ -1,23 +1,73 @@
+<div class="search-wrapper card input-field" style="margin-right: 10px; margin-left: 10px">
+  <form>
+    <div class="input-field">
+      <input ng-model = "s_query" id="search" type="search" style="margin-left: 50px;border-bottom: 0px; box-shadow: 0 0 0 0;width: 200pt;" required>
+      <label class="label-icon" for="search" style="top: -3px;"><i class="material-icons">search</i></label>
+      <!-- <i class="material-icons">close</i> -->
+    </div>
+  </form>
+</div>
 <div class="container">
-  <h4 id="b_head" class="center-align">Books of the Bible</h5>
-  <div class="row">
-    <div class="col s6">
-      <h6 class="center-align">OT</h6>
-      <ul id="ot_id" class="collection" style='overflow:scroll;'>
-        <li ng-repeat="each in ot" class="collection-item center-align"><a href="#!/book/{{each.bno}}">{{each.name}}</a></li>
-      </ul>
-    </div>
-    <div class="col s6">
-      <h6 class="center-align">NT</h6>
-      <ul id="nt_id" class="collection" style='overflow:scroll;'>
-        <li ng-repeat="each in nt" class="collection-item center-align"><a href="#!/book/{{each.bno}}">{{each.name}}</a></li>
-      </ul>
-    </div>
-    <!-- <a ng-click="closeapp()">.</a> -->
+  <div ng-show="song_index" class="col s12">
+    <ul class="collection">
+      <li ng-repeat="each in fsongs  = (songs | filter:s_query)" class="collection-item"><a href="#!/passage/{{$index}}">{{each.title}}</a><a href="#!" class="secondary-content">{{$index+1}}</a></li>
+      <li ng-hide="fsongs.length" class="collection-item center-align">Not found :(</li>
+    </ul>
   </div>
-  <!-- <ul class="collection with-header">
-    <li class="collection-header"><h4>Books of the Bible</h4></li>
-    <li ng-repeat="each in bible" class="collection-item"><a href="#!/book/{{$index}}">{{each.name}}</a></li>
-  </ul> -->
+  <div class="col s12" ng-show="loader">
+    <center>
+      <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
 
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    </center>
+  </div>
+  <div class="col s12" ng-show="error_msg">
+    <ul class="collection">
+      <li class="collection-item center-align">Thanks for installing, get connected to the internet and reopen the app.</li>
+    </ul>
+  </div>
+  <!-- <h5>{{newflag}}</h5>
+  <div class="col s12">
+    <ul class="collection">
+      <li ng-repeat="each in index_test" class="collection-item"><a>{{each.firstName}}</a></li>
+    </ul>
+  </div> -->
 </div>

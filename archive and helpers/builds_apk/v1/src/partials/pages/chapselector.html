@@ -1,0 +1,9 @@
+<div class="container">
+  <h4 class="center-align">{{selectedbook}}</h4>
+  <p class="center-align">CHAPTERS</p>
+  <div class="row">
+    <div ng-repeat="each in chapters" class="col s2">
+      <p class="center-align"><a href="#!/chapter/{{bookindex}}/{{each}}">{{each}}</a></p>
+    </div>
+  </div>
+</div>

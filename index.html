@@ -67,55 +67,14 @@
   <!-- config -->
   <script src="js/app/config/route.js"></script>
   <!-- controllers -->
-  <script src="js/app/controllers/devhome-controller.js"></script>
-  <script src="js/app/controllers/chapselector-controller.js"></script>
-  <script src="js/app/controllers/home-controller.js"></script>
   <script src="js/app/controllers/refselector-controller.js"></script>
   <script src="js/app/controllers/passage-controller.js"></script>
-  <script src="js/app/controllers/verses-controller.js"></script>
   <!-- have commented the below cordova js to run it in browser, remember to uncomment it while putting it in cordova -->
   <!-- <script type="text/javascript" src="cordova.js"></script> -->
+  <script type="text/javascript" src="js/index.js"></script>
   <script>
   $( document ).ready(function() {
-    // function myFunction() {
-    //    KioskPlugin.exitKiosk();
-    // };
-    // I'm starting the angular bootstrap here, actually it is suspose to start inside the deviceready cordovian function, again its temp setup for development.
     var domElement = document.getElementById("app"); angular.bootstrap(domElement, ["App"]);
-
-    var app = {
-        // Application Constructor
-        initialize: function() {
-            document.addEventListener('deviceready', function(){
-              console.log('wow da inside device ready fyb');
-              var domElement = document.getElementById("app"); angular.bootstrap(domElement, ["App"]);
-            }, false);
-            // document.getElementById("closeappbtn").onclick = function() {myFunction()};
-        },
-
-        // deviceready Event Handler
-        //
-        // Bind any cordova events here. Common events are:
-        // 'pause', 'resume', etc.
-        onDeviceReady: function() {
-          // console.log('wow da2');
-            // this.receivedEvent('deviceready');
-            // var domElement = document.getElementById("app"); angular.bootstrap(domElement, ["App"]);
-        },
-
-        // Update DOM on a Received Event
-        receivedEvent: function(id) {
-            var parentElement = document.getElementById(id);
-            var listeningElement = parentElement.querySelector('.listening');
-            var receivedElement = parentElement.querySelector('.received');
-
-            listeningElement.setAttribute('style', 'display:none;');
-            receivedElement.setAttribute('style', 'display:block;');
-
-            console.log('Received Event: ' + id);
-        }
-    };
-    app.initialize();
   });
   </script>
 </body>
